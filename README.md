@@ -25,7 +25,7 @@ The development of BLAKE3 was sponsored by the Electric Coin Company.
 which means it could run on any platform that `LLVM` has SIMD implementation.
 
 ## BENCHMARKS
-could be found at [github pages]()
+could be found at [github pages](https://lemonhx.moe/BLAKE3-STD/)
 
 ## USAGE
 same as the official one
