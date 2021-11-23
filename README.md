@@ -26,7 +26,7 @@ which means it could run on any platform that `LLVM` has SIMD implementation.
 
 ## BENCHMARKS
 could be found at [github pages](https://lemonhx.moe/BLAKE3-STD/)
-
+![part](bench.mac.png)
 ## USAGE
 same as the official one
 
