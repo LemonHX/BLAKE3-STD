@@ -1,5 +1,4 @@
-use crate::{CVBytes, CVWords, BLOCK_LEN, IV, MSG_SCHEDULE, OUT_LEN};
-use arrayref::{array_mut_ref, array_ref};
+use crate::{BLOCK_LEN, CVBytes, CVWords, IV, MSG_SCHEDULE, OUT_LEN, array_mut_ref, array_ref};
 
 #[inline(always)]
 fn g(state: &mut [u32; 16], a: usize, b: usize, c: usize, d: usize, x: u32, y: u32) {

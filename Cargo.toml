@@ -21,6 +21,5 @@ blake2 = "0.9"
 sha2 = "0.9"
 
 [dependencies]
-arrayref = "0.3.2"
 arrayvec = "*"
 rand = "*"

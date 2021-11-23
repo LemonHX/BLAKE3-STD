@@ -1,8 +1,7 @@
 use std::simd::{i32x8, i64x4, simd_swizzle, u32x8, Which::*};
 
-use arrayref::array_mut_ref;
 
-use crate::{CVWords, BLOCK_LEN, IV, MSG_SCHEDULE, OUT_LEN};
+use crate::{BLOCK_LEN, CVWords, IV, MSG_SCHEDULE, OUT_LEN, array_mut_ref};
 pub const DEGREE: usize = 8;
 
 #[inline(always)]

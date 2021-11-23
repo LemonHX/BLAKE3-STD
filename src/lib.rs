@@ -17,7 +17,7 @@ mod join;
 pub mod reference_impl;
 #[cfg(test)]
 mod test;
-
+#[macro_export]
 macro_rules! array_mut_ref {
     ($arr:expr, $offset:expr, $len:expr) => {{
         {
@@ -34,7 +34,7 @@ macro_rules! array_mut_ref {
         }
     }}
 }
-
+#[macro_export]
 macro_rules! array_ref {
     ($arr:expr, $offset:expr, $len:expr) => {{
         {
