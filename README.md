@@ -2,6 +2,8 @@
 # BLAKE3-STD
 > the first blake3 implementation on `std::simd`
 
+[![CI](https://github.com/LemonHX/BLAKE3-STD/actions/workflows/rust.yml/badge.svg)](https://github.com/LemonHX/BLAKE3-STD/actions/workflows/rust.yml)
+
 ## OFFICIAL DOC
 BLAKE3 is a cryptographic hash function that is:
 
