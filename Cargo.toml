@@ -5,7 +5,7 @@ edition = "2021"
 license = "Apache-2.0"
 description = "the BLAKE3 hash function implementation with std::simd"
 authors = ["Jack O'Connor <oconnor663@gmail.com>", "LemonHX <lemonhx@lemonhx.tech>"]
-repository = "https://github.com/rustcc/blake3-simd"
+repository = "https://github.com/LemonHX/BLAKE3-STD"
 features = ["rayon"]
 
 [[bench]]
