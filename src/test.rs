@@ -1,4 +1,4 @@
-use crate::{CHUNK_LEN, CVWords, OUT_LEN, array_ref};
+use crate::{array_ref, CVWords, CHUNK_LEN, OUT_LEN};
 use arrayvec::ArrayVec;
 use core::usize;
 

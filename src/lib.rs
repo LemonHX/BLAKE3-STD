@@ -31,7 +31,7 @@ macro_rules! array_mut_ref {
                 as_array(slice)
             }
         }
-    }}
+    }};
 }
 #[macro_export]
 macro_rules! array_ref {
@@ -42,13 +42,13 @@ macro_rules! array_ref {
                 &*(slice.as_ptr() as *const [_; $len])
             }
             let offset = $offset;
-            let slice = & $arr[offset..offset + $len];
+            let slice = &$arr[offset..offset + $len];
             #[allow(unused_unsafe)]
             unsafe {
                 as_array(slice)
             }
         }
-    }}
+    }};
 }
 
 const MAX_DEPTH: usize = 54;
