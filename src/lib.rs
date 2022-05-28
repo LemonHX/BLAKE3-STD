@@ -1,6 +1,5 @@
 #![feature(portable_simd)]
 #![feature(stdsimd)]
-#![feature(destructuring_assignment)]
 #![feature(repr_simd)]
 #![feature(array_windows)]
 #![feature(stdarch)]

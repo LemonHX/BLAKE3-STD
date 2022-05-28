@@ -1,7 +1,6 @@
-use std::simd::{i32x8, i64x4, simd_swizzle, u32x8, Which::*};
+use std::simd::{i32x8, i64x4, simd_swizzle, u32x8, Simd, Which::*};
 
-
-use crate::{BLOCK_LEN, CVWords, IV, MSG_SCHEDULE, OUT_LEN, array_mut_ref};
+use crate::{array_mut_ref, CVWords, BLOCK_LEN, IV, MSG_SCHEDULE, OUT_LEN};
 pub const DEGREE: usize = 8;
 
 #[inline(always)]
@@ -69,25 +68,25 @@ fn round(v: &mut [i32x8; 16], m: &[i32x8; 16], r: usize) {
     v[12] = {
         let i = v[12];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 16 | i << (32 - 16);
+        let i = i >> Simd::from([16; 8]) | i << Simd::from([(32 - 16); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[13] = {
         let i = v[13];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 16 | i << (32 - 16);
+        let i = i >> Simd::from([16; 8]) | i << Simd::from([(32 - 16); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[14] = {
         let i = v[14];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 16 | i << (32 - 16);
+        let i = i >> Simd::from([16; 8]) | i << Simd::from([(32 - 16); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[15] = {
         let i = v[15];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 16 | i << (32 - 16);
+        let i = i >> Simd::from([16; 8]) | i << Simd::from([(32 - 16); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[8] = {
@@ -133,25 +132,25 @@ fn round(v: &mut [i32x8; 16], m: &[i32x8; 16], r: usize) {
     v[4] = {
         let i = v[4];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 12 | i << (32 - 12);
+        let i = i >> Simd::from([12; 8]) | i << Simd::from([(32 - 12); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[5] = {
         let i = v[5];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 12 | i << (32 - 12);
+        let i = i >> Simd::from([12; 8]) | i << Simd::from([(32 - 12); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[6] = {
         let i = v[6];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 12 | i << (32 - 12);
+        let i = i >> Simd::from([12; 8]) | i << Simd::from([(32 - 12); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[7] = {
         let i = v[7];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 12 | i << (32 - 12);
+        let i = i >> Simd::from([12; 8]) | i << Simd::from([(32 - 12); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[0] = {
@@ -217,25 +216,25 @@ fn round(v: &mut [i32x8; 16], m: &[i32x8; 16], r: usize) {
     v[12] = {
         let i = v[12];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 8 | i << (32 - 8);
+        let i = i >> Simd::from([8; 8]) | i << Simd::from([(32 - 8); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[13] = {
         let i = v[13];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 8 | i << (32 - 8);
+        let i = i >> Simd::from([8; 8]) | i << Simd::from([(32 - 8); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[14] = {
         let i = v[14];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 8 | i << (32 - 8);
+        let i = i >> Simd::from([8; 8]) | i << Simd::from([(32 - 8); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[15] = {
         let i = v[15];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 8 | i << (32 - 8);
+        let i = i >> Simd::from([8; 8]) | i << Simd::from([(32 - 8); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[8] = {
@@ -281,25 +280,25 @@ fn round(v: &mut [i32x8; 16], m: &[i32x8; 16], r: usize) {
     v[4] = {
         let i = v[4];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 7 | i << (32 - 7);
+        let i = i >> Simd::from([7; 8]) | i << Simd::from([(32 - 7); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[5] = {
         let i = v[5];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 7 | i << (32 - 7);
+        let i = i >> Simd::from([7; 8]) | i << Simd::from([(32 - 7); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[6] = {
         let i = v[6];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 7 | i << (32 - 7);
+        let i = i >> Simd::from([7; 8]) | i << Simd::from([(32 - 7); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[7] = {
         let i = v[7];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 7 | i << (32 - 7);
+        let i = i >> Simd::from([7; 8]) | i << Simd::from([(32 - 7); 8]);
         unsafe { std::mem::transmute(i) }
     };
 
@@ -366,25 +365,25 @@ fn round(v: &mut [i32x8; 16], m: &[i32x8; 16], r: usize) {
     v[15] = {
         let i = v[15];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 16 | i << (32 - 16);
+        let i = i >> Simd::from([16; 8]) | i << Simd::from([(32 - 16); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[12] = {
         let i = v[12];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 16 | i << (32 - 16);
+        let i = i >> Simd::from([16; 8]) | i << Simd::from([(32 - 16); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[13] = {
         let i = v[13];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 16 | i << (32 - 16);
+        let i = i >> Simd::from([16; 8]) | i << Simd::from([(32 - 16); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[14] = {
         let i = v[14];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 16 | i << (32 - 16);
+        let i = i >> Simd::from([16; 8]) | i << Simd::from([(32 - 16); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[10] = {
@@ -430,25 +429,25 @@ fn round(v: &mut [i32x8; 16], m: &[i32x8; 16], r: usize) {
     v[5] = {
         let i = v[5];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 12 | i << (32 - 12);
+        let i = i >> Simd::from([12; 8]) | i << Simd::from([(32 - 12); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[6] = {
         let i = v[6];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 12 | i << (32 - 12);
+        let i = i >> Simd::from([12; 8]) | i << Simd::from([(32 - 12); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[7] = {
         let i = v[7];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 12 | i << (32 - 12);
+        let i = i >> Simd::from([12; 8]) | i << Simd::from([(32 - 12); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[4] = {
         let i = v[4];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 12 | i << (32 - 12);
+        let i = i >> Simd::from([12; 8]) | i << Simd::from([(32 - 12); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[0] = {
@@ -514,25 +513,25 @@ fn round(v: &mut [i32x8; 16], m: &[i32x8; 16], r: usize) {
     v[15] = {
         let i = v[15];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 8 | i << (32 - 8);
+        let i = i >> Simd::from([8; 8]) | i << Simd::from([(32 - 8); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[12] = {
         let i = v[12];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 8 | i << (32 - 8);
+        let i = i >> Simd::from([8; 8]) | i << Simd::from([(32 - 8); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[13] = {
         let i = v[13];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 8 | i << (32 - 8);
+        let i = i >> Simd::from([8; 8]) | i << Simd::from([(32 - 8); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[14] = {
         let i = v[14];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 8 | i << (32 - 8);
+        let i = i >> Simd::from([8; 8]) | i << Simd::from([(32 - 8); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[10] = {
@@ -578,25 +577,25 @@ fn round(v: &mut [i32x8; 16], m: &[i32x8; 16], r: usize) {
     v[5] = {
         let i = v[5];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 7 | i << (32 - 7);
+        let i = i >> Simd::from([7; 8]) | i << Simd::from([(32 - 7); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[6] = {
         let i = v[6];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 7 | i << (32 - 7);
+        let i = i >> Simd::from([7; 8]) | i << Simd::from([(32 - 7); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[7] = {
         let i = v[7];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 7 | i << (32 - 7);
+        let i = i >> Simd::from([7; 8]) | i << Simd::from([(32 - 7); 8]);
         unsafe { std::mem::transmute(i) }
     };
     v[4] = {
         let i = v[4];
         let i: u32x8 = unsafe { std::mem::transmute(i) };
-        let i = i >> 7 | i << (32 - 7);
+        let i = i >> Simd::from([7; 8]) | i << Simd::from([(32 - 7); 8]);
         unsafe { std::mem::transmute(i) }
     };
 }
