@@ -2,7 +2,6 @@
 #![feature(stdsimd)]
 #![feature(repr_simd)]
 #![feature(array_windows)]
-#![feature(stdarch)]
 #![allow(dead_code)]
 use arrayvec::{ArrayString, ArrayVec};
 use fallback::compress_in_place;
