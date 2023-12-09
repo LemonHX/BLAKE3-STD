@@ -19,7 +19,7 @@ criterion = "0.3"
 md5 = "0.7"
 blake2 = "0.9"
 sha2 = "0.9"
+rand = "0.8"
 
 [dependencies]
 arrayvec = "0.7"
-rand = "0.8"
