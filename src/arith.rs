@@ -1,4 +1,4 @@
-use std::simd::{i32x8, i64x4, simd_swizzle, u32x8, Simd, Which::*};
+use std::simd::{i32x8, i64x4, simd_swizzle, u32x8, Simd};
 
 use crate::{array_mut_ref, CVWords, BLOCK_LEN, IV, MSG_SCHEDULE, OUT_LEN};
 pub const DEGREE: usize = 8;
@@ -602,38 +602,12 @@ fn round(v: &mut [i32x8; 16], m: &[i32x8; 16], r: usize) {
 
 macro_rules! unpack8lo {
     ($x:expr,$y:expr) => {
-        simd_swizzle!(
-            $x,
-            $y,
-            [
-                First(0),
-                Second(0),
-                First(1),
-                Second(1),
-                First(4),
-                Second(4),
-                First(5),
-                Second(5)
-            ]
-        )
+        simd_swizzle!($x, $y, [0, 8 + 0, 1, 8 + 1, 4, 8 + 4, 5, 8 + 5])
     };
 }
 macro_rules! unpack8hi {
     ($x:expr,$y:expr) => {
-        simd_swizzle!(
-            $x,
-            $y,
-            [
-                First(2),
-                Second(2),
-                First(3),
-                Second(3),
-                First(6),
-                Second(6),
-                First(7),
-                Second(7)
-            ]
-        )
+        simd_swizzle!($x, $y, [2, 8 + 2, 3, 8 + 3, 6, 8 + 6, 7, 8 + 7])
     };
 }
 macro_rules! unpack8 {
@@ -644,12 +618,12 @@ macro_rules! unpack8 {
 
 macro_rules! unpack4lo {
     ($x:expr,$y:expr) => {
-        simd_swizzle!($x, $y, [First(0), Second(0), First(2), Second(2),])
+        simd_swizzle!($x, $y, [0, 4 + 0, 2, 4 + 2])
     };
 }
 macro_rules! unpack4hi {
     ($x:expr,$y:expr) => {
-        simd_swizzle!($x, $y, [First(1), Second(1), First(3), Second(3),])
+        simd_swizzle!($x, $y, [1, 4 + 1, 3, 4 + 3])
     };
 }
 macro_rules! unpack4 {
@@ -659,12 +633,12 @@ macro_rules! unpack4 {
 }
 macro_rules! unpack2lo {
     ($x:expr,$y:expr) => {
-        simd_swizzle!($x, $y, [First(0), First(1), Second(0), Second(1),])
+        simd_swizzle!($x, $y, [0, 1, 4 + 0, 4 + 1])
     };
 }
 macro_rules! unpack2hi {
     ($x:expr,$y:expr) => {
-        simd_swizzle!($x, $y, [First(2), First(3), Second(2), Second(3),])
+        simd_swizzle!($x, $y, [2, 3, 4 + 2, 4 + 3])
     };
 }
 macro_rules! unpack2 {
